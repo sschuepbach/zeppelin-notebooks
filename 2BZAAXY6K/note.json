@@ -1,0 +1,122 @@
+{
+  "paragraphs": [
+    {
+      "text": "val morphDef \u003d\n\u003cmetamorph xmlns\u003d\"http://www.culturegraph.org/metamorph\" version\u003d\"1\"\u003e\n\n\u003crules\u003e\n    \u003cdata source\u003d\"001\" name\u003d\"_id\" /\u003e\n    \u003cdata source\u003d\"245??.a\" name\u003d\"title\" /\u003e\n\t\u003c!-- \u003cdata source\u003d\"_else\" /\u003e --\u003e\n\u003c/rules\u003e\n\n\u003c/metamorph\u003e",
+      "dateUpdated": "Oct 20, 2016 9:05:47 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1475176656735_-1913311074",
+      "id": "20160929-211736_605065718",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\n\n\n\n\n\n\n\n\n\nmorphDef: scala.xml.Elem \u003d\n\u003cmetamorph version\u003d\"1\" xmlns\u003d\"http://www.culturegraph.org/metamorph\"\u003e\n\n\u003crules\u003e\n    \u003cdata source\u003d\"001\" name\u003d\"_id\"/\u003e\n    \u003cdata source\u003d\"245??.a\" name\u003d\"title\"/\u003e\n\t\u003c!-- \u003cdata source\u003d\"_else\" /\u003e --\u003e\n\u003c/rules\u003e\n\n\u003c/metamorph\u003e\n"
+      },
+      "dateCreated": "Sep 29, 2016 9:17:36 AM",
+      "dateStarted": "Oct 20, 2016 9:05:47 PM",
+      "dateFinished": "Oct 20, 2016 9:05:47 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import java.io.StringReader\nimport org.culturegraph.mf.morph.Metamorph\nimport org.culturegraph.mf.stream.converter.xml.MarcXmlHandler\nimport org.culturegraph.mf.stream.converter.xml.XmlDecoder\nimport org.culturegraph.mf.stream.source.DirReader\nimport org.culturegraph.mf.stream.source.GzipOpener\nimport org.culturegraph.mf.stream.converter.StreamToTriples\nimport org.culturegraph.mf.stream.pipe.sort.TripleCount\nimport org.culturegraph.mf.stream.converter.ObjectTemplate\nimport org.culturegraph.mf.stream.pipe.sort.AbstractTripleSort.Compare\nimport org.culturegraph.mf.types.Triple\nimport org.culturegraph.mf.stream.sink.ObjectWriter\n\nval dirReader \u003d new DirReader()\nval gzipOpener \u003d new GzipOpener()\nval xmlDecoder \u003d new XmlDecoder()\nval marcXmlHandler \u003d new MarcXmlHandler\nval metamorph \u003d new Metamorph(new StringReader(morphDef.toString))\nval streamToTriples \u003d new StreamToTriples()\nval tripleCount \u003d new TripleCount()\nval template: ObjectTemplate[Triple] \u003d new ObjectTemplate(\"${s},${p},${o}\")\nval writer: ObjectWriter[String] \u003d new ObjectWriter(\"/home/seb/test.csv\")\n\nstreamToTriples.setRedirect(true)\n//tripleCount.setCountBy(Compare.OBJECT)\n\ndirReader\n    .setReceiver(gzipOpener)\n    .setReceiver(xmlDecoder)\n    .setReceiver(marcXmlHandler)\n    .setReceiver(metamorph)\n    .setReceiver(streamToTriples)\n    .setReceiver(tripleCount)\n    .setReceiver(template)\n    .setReceiver(writer)\n\ndirReader.process(\"/data/sbdump/marcDataCBS_demo\")",
+      "dateUpdated": "Oct 20, 2016 9:42:42 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1475176204925_-1763858814",
+      "id": "20160929-211004_1397218106",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nimport java.io.StringReader\n\nimport org.culturegraph.mf.morph.Metamorph\n\nimport org.culturegraph.mf.stream.converter.xml.MarcXmlHandler\n\nimport org.culturegraph.mf.stream.converter.xml.XmlDecoder\n\nimport org.culturegraph.mf.stream.source.DirReader\n\nimport org.culturegraph.mf.stream.source.GzipOpener\n\nimport org.culturegraph.mf.stream.converter.StreamToTriples\n\nimport org.culturegraph.mf.stream.pipe.sort.TripleSort\n\nimport org.culturegraph.mf.stream.converter.ObjectTemplate\n\nimport org.culturegraph.mf.stream.pipe.sort.AbstractTripleSort.Compare\n\nimport org.culturegraph.mf.types.Triple\n\nimport org.culturegraph.mf.stream.sink.ObjectWriter\n\ndirReader: org.culturegraph.mf.stream.source.DirReader \u003d org.culturegraph.mf.stream.source.DirReader@5e7b3ceb\n\nwarning: there was one deprecation warning; re-run with -deprecation for details\n\ngzipOpener: org.culturegraph.mf.stream.source.GzipOpener \u003d org.culturegraph.mf.stream.source.GzipOpener@3e6b6bdc\n\nxmlDecoder: org.culturegraph.mf.stream.converter.xml.XmlDecoder \u003d org.culturegraph.mf.stream.converter.xml.XmlDecoder@2bfdb850\n\nmarcXmlHandler: org.culturegraph.mf.stream.converter.xml.MarcXmlHandler \u003d org.culturegraph.mf.stream.converter.xml.MarcXmlHandler@7798a055\n\nmetamorph: org.culturegraph.mf.morph.Metamorph \u003d org.culturegraph.mf.morph.Metamorph@4bbc1ab2\n\nstreamToTriples: org.culturegraph.mf.stream.converter.StreamToTriples \u003d org.culturegraph.mf.stream.converter.StreamToTriples@f31b538\n\ntripleCount: org.culturegraph.mf.stream.pipe.sort.TripleSort \u003d org.culturegraph.mf.stream.pipe.sort.TripleSort@19c2552e\n\ntemplate: org.culturegraph.mf.stream.converter.ObjectTemplate[org.culturegraph.mf.types.Triple] \u003d org.culturegraph.mf.stream.converter.ObjectTemplate@5ea5e36\n\nwriter: org.culturegraph.mf.stream.sink.ObjectWriter[String] \u003d org.culturegraph.mf.stream.sink.ObjectWriter@7b8cf5d8\n\nres45: org.culturegraph.mf.stream.sink.ObjectWriter[String] \u003d org.culturegraph.mf.stream.sink.ObjectWriter@7b8cf5d8\n"
+      },
+      "dateCreated": "Sep 29, 2016 9:10:04 AM",
+      "dateStarted": "Oct 20, 2016 9:37:29 PM",
+      "dateFinished": "Oct 20, 2016 9:37:52 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Sep 30, 2016 3:54:48 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1475243677890_-1389447891",
+      "id": "20160930-155437_2084495937",
+      "dateCreated": "Sep 30, 2016 3:54:37 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "mfAggs",
+  "id": "2BZAAXY6K",
+  "angularObjects": {
+    "2BVCDPCFK:shared_process": [],
+    "2BWMSKJK8:shared_process": [],
+    "2BVXY4AEK:shared_process": [],
+    "2BUTCB2SU:shared_process": [],
+    "2BTVWBCJ9:shared_process": [],
+    "2BTG7CAVQ:shared_process": [],
+    "2BWJPQAX2:shared_process": [],
+    "2BWRW75AN:shared_process": [],
+    "2BWA19B62:shared_process": [],
+    "2BTDKTBGB:shared_process": [],
+    "2BTCNK1ZS:shared_process": [],
+    "2BWP77CYU:shared_process": [],
+    "2BT5WQ7DM:shared_process": [],
+    "2BW3Z36G2:shared_process": [],
+    "2BVYBQHW5:shared_process": [],
+    "2BVT54TNC:shared_process": [],
+    "2BT2E2JAA:shared_process": [],
+    "2BVAAKNH8:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

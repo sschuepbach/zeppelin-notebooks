@@ -1,0 +1,142 @@
+{
+  "paragraphs": [
+    {
+      "text": "val libraries \u003d sc.textFile(\"file:///home/seb/projekte/mfWorkflows/demo/ex2/count.csv\")\n\ncase class Libs(name: String, cnt: Int)\n\nval libTbl \u003d libraries.map(s \u003d\u003e s.split(\",\")).map(s \u003d\u003e Libs(s(0), s(1).toInt))\n\nlibTbl.toDF().registerTempTable(\"libs\")",
+      "dateUpdated": "Dec 6, 2016 3:02:20 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1473965357200_-708787728",
+      "id": "20160915-142412_1802065476",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\njava.lang.NoSuchMethodError: com.fasterxml.jackson.databind.JavaType.isReferenceType()Z\n  at com.fasterxml.jackson.databind.ser.BasicSerializerFactory.findSerializerByLookup(BasicSerializerFactory.java:302)\n  at com.fasterxml.jackson.databind.ser.BeanSerializerFactory._createSerializer2(BeanSerializerFactory.java:218)\n  at com.fasterxml.jackson.databind.ser.BeanSerializerFactory.createSerializer(BeanSerializerFactory.java:153)\n  at com.fasterxml.jackson.databind.SerializerProvider._createUntypedSerializer(SerializerProvider.java:1203)\n  at com.fasterxml.jackson.databind.SerializerProvider._createAndCacheUntypedSerializer(SerializerProvider.java:1157)\n  at com.fasterxml.jackson.databind.SerializerProvider.findValueSerializer(SerializerProvider.java:481)\n  at com.fasterxml.jackson.databind.SerializerProvider.findTypedValueSerializer(SerializerProvider.java:679)\n  at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:107)\n  at com.fasterxml.jackson.databind.ObjectMapper._configAndWriteValue(ObjectMapper.java:3559)\n  at com.fasterxml.jackson.databind.ObjectMapper.writeValueAsString(ObjectMapper.java:2927)\n  at org.apache.spark.rdd.RDDOperationScope.toJson(RDDOperationScope.scala:52)\n  at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:145)\n  at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)\n  at org.apache.spark.SparkContext.withScope(SparkContext.scala:682)\n  at org.apache.spark.SparkContext.textFile(SparkContext.scala:800)\n  ... 47 elided\n"
+      },
+      "dateCreated": "Sep 15, 2016 8:49:17 AM",
+      "dateStarted": "Dec 6, 2016 3:02:20 PM",
+      "dateFinished": "Dec 6, 2016 3:02:29 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql\nselect name, cnt from libs order by cnt desc",
+      "dateUpdated": "Sep 27, 2016 4:10:10 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": true,
+          "keys": [
+            {
+              "name": "name",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "cnt",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "name",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1473965357201_-709172476",
+      "id": "20160915-144650_1119446274",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "name\tcnt\nAKB\t330\nHMA\t325\nSBA\t169\nKSWE\t87\nNAT\t69\nAKS\t36\nNKS\t32\nZBSO\t19\nKSBB\t17\nKSWO\t17\nKSBA\t10\nSTA\t7\nBBB\t5\nKSZ\t5\nDPA\t2\nKURA\t2\n"
+      },
+      "dateCreated": "Sep 15, 2016 8:49:17 AM",
+      "dateStarted": "Sep 15, 2016 9:31:59 AM",
+      "dateFinished": "Sep 15, 2016 9:31:59 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Sep 15, 2016 9:25:41 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1473967531479_-1085715244",
+      "id": "20160915-212531_908476197",
+      "dateCreated": "Sep 15, 2016 9:25:31 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "libcount",
+  "id": "2BVAEP79C",
+  "angularObjects": {
+    "2BVCDPCFK:shared_process": [],
+    "2BWMSKJK8:shared_process": [],
+    "2BVXY4AEK:shared_process": [],
+    "2BUTCB2SU:shared_process": [],
+    "2BTVWBCJ9:shared_process": [],
+    "2BTG7CAVQ:shared_process": [],
+    "2BWJPQAX2:shared_process": [],
+    "2BWRW75AN:shared_process": [],
+    "2BWA19B62:shared_process": [],
+    "2BTDKTBGB:shared_process": [],
+    "2BTCNK1ZS:shared_process": [],
+    "2BWP77CYU:shared_process": [],
+    "2BT5WQ7DM:shared_process": [],
+    "2BW3Z36G2:shared_process": [],
+    "2BVYBQHW5:shared_process": [],
+    "2BVT54TNC:shared_process": [],
+    "2BT2E2JAA:shared_process": [],
+    "2BVAAKNH8:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}

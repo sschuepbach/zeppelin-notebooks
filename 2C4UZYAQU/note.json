@@ -1,0 +1,176 @@
+{
+  "paragraphs": [
+    {
+      "text": "import org.apache.spark.SparkConf\nimport org.apache.spark.streaming.{Seconds, StreamingContext}\n\nval appName \u003d \"Spark Streaming Test\"\n\nval ssc \u003d new StreamingContext(sc, Seconds(2))\n  val lines \u003d ssc.socketTextStream(\"localhost\", 7777)\n  val errorLines \u003d lines.filter(_.contains(\"error\"))\n  errorLines.print()\n  ssc.start()\n  ssc.awaitTermination()",
+      "dateUpdated": "Dec 10, 2016 12:42:02 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481369871208_1983501689",
+      "id": "20161210-123751_980024808",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\nimport org.apache.spark.SparkConf\n\nimport org.apache.spark.streaming.{Seconds, StreamingContext}\n\nappName: String \u003d Spark Streaming Test\n\nconf: org.apache.spark.SparkConf \u003d org.apache.spark.SparkConf@334a24fd\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\norg.apache.spark.SparkException: Only one SparkContext may be running in this JVM (see SPARK-2243). To ignore this error, set spark.driver.allowMultipleContexts \u003d true. The currently running SparkContext was created at:\norg.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:823)\nsun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\nsun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\nsun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\njava.lang.reflect.Method.invoke(Method.java:498)\norg.apache.zeppelin.spark.Utils.invokeMethod(Utils.java:38)\norg.apache.zeppelin.spark.Utils.invokeMethod(Utils.java:33)\norg.apache.zeppelin.spark.SparkInterpreter.createSparkSession(SparkInterpreter.java:337)\norg.apache.zeppelin.spark.SparkInterpreter.getSparkSession(SparkInterpreter.java:217)\norg.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:816)\norg.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:69)\norg.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:93)\norg.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:341)\norg.apache.zeppelin.scheduler.Job.run(Job.java:176)\norg.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\njava.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\njava.util.concurrent.FutureTask.run(FutureTask.java:266)\njava.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\njava.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\njava.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n  at org.apache.spark.SparkContext$$anonfun$assertNoOtherContextIsRunning$2.apply(SparkContext.scala:2221)\n  at org.apache.spark.SparkContext$$anonfun$assertNoOtherContextIsRunning$2.apply(SparkContext.scala:2217)\n  at scala.Option.foreach(Option.scala:257)\n  at org.apache.spark.SparkContext$.assertNoOtherContextIsRunning(SparkContext.scala:2217)\n  at org.apache.spark.SparkContext$.markPartiallyConstructed(SparkContext.scala:2290)\n  at org.apache.spark.SparkContext.\u003cinit\u003e(SparkContext.scala:89)\n  at org.apache.spark.streaming.StreamingContext$.createNewSparkContext(StreamingContext.scala:836)\n  at org.apache.spark.streaming.StreamingContext.\u003cinit\u003e(StreamingContext.scala:84)\n  ... 47 elided\n"
+      },
+      "dateCreated": "Dec 10, 2016 12:37:51 PM",
+      "dateStarted": "Dec 10, 2016 12:42:02 PM",
+      "dateFinished": "Dec 10, 2016 12:40:49 PM",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "ssc.stop(stopSparkContext\u003dfalse, stopGracefully\u003dtrue)",
+      "dateUpdated": "Dec 10, 2016 12:47:44 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481369944684_-1823295874",
+      "id": "20161210-123904_658635442",
+      "dateCreated": "Dec 10, 2016 12:39:04 PM",
+      "dateStarted": "Dec 10, 2016 12:47:44 PM",
+      "dateFinished": "Dec 10, 2016 12:47:50 PM",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "ssc.stop",
+      "dateUpdated": "Dec 10, 2016 12:47:33 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481370430944_-1246483941",
+      "id": "20161210-124710_124846018",
+      "dateCreated": "Dec 10, 2016 12:47:10 PM",
+      "dateStarted": "Dec 10, 2016 12:47:36 PM",
+      "dateFinished": "Dec 10, 2016 12:47:38 PM",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "ssc.stop(true)",
+      "dateUpdated": "Dec 10, 2016 12:48:43 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481370453335_253129354",
+      "id": "20161210-124733_1461924714",
+      "dateCreated": "Dec 10, 2016 12:47:33 PM",
+      "dateStarted": "Dec 10, 2016 12:48:43 PM",
+      "dateFinished": "Dec 10, 2016 12:49:12 PM",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Dec 10, 2016 12:48:53 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481370523126_878786905",
+      "id": "20161210-124843_1162722506",
+      "dateCreated": "Dec 10, 2016 12:48:43 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "SparkStreamingTest",
+  "id": "2C4UZYAQU",
+  "angularObjects": {
+    "2C55KFUKH:shared_process": [],
+    "2C53E4JY2:shared_process": [],
+    "2C5RYJFX2:shared_process": [],
+    "2C3B8ZSUC:shared_process": [],
+    "2C35VVM2D:shared_process": [],
+    "2C3KYBNYX:shared_process": [],
+    "2C3WT1JAW:shared_process": [],
+    "2C3BS2KHD:shared_process": [],
+    "2C5N86NPR:shared_process": [],
+    "2C5R9HA2S:shared_process": [],
+    "2C4WR1VQQ:shared_process": [],
+    "2C4ZMZ41Q:shared_process": [],
+    "2C5MKQ4R3:shared_process": [],
+    "2C3VXRBN2:shared_process": [],
+    "2C63MSQXB:shared_process": [],
+    "2C5NRVG6S:shared_process": [],
+    "2C2UFUS76:shared_process": [],
+    "2C2U1S49G:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

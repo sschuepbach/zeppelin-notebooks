@@ -1,0 +1,157 @@
+{
+  "paragraphs": [
+    {
+      "text": "%elasticsearch\nhelp",
+      "dateUpdated": "Sep 15, 2016 10:15:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1473970515438_801902255",
+      "id": "20160915-221515_186342244",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Elasticsearch interpreter:\nGeneral format: \u003ccommand\u003e /\u003cindices\u003e/\u003ctypes\u003e/\u003cid\u003e \u003coption\u003e \u003cJSON\u003e\n  - indices: list of indices separated by commas (depends on the command)\n  - types: list of document types separated by commas (depends on the command)\nCommands:\n  - search /indices/types \u003cquery\u003e\n    . indices and types can be omitted (at least, you have to provide \u0027/\u0027)\n    . a query is either a JSON-formatted query, nor a lucene query\n  - size \u003cvalue\u003e\n    . defines the size of the result set (default value is in the config)\n    . if used, this command must be declared before a search command\n  - count /indices/types \u003cquery\u003e\n    . same comments as for the search\n  - get /index/type/id\n  - delete /index/type/id\n  - index /ndex/type/id \u003cjson-formatted document\u003e\n    . the id can be omitted, elasticsearch will generate one\n"
+      },
+      "dateCreated": "Sep 15, 2016 10:15:15 AM",
+      "dateStarted": "Sep 15, 2016 10:15:30 AM",
+      "dateFinished": "Sep 15, 2016 10:15:31 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%elasticsearch\nsize ${limit\u003d30}\nsearch /zh-gemeinden/ {\"query\": { \"match_all\": {} } }",
+      "dateUpdated": "Sep 15, 2016 10:23:41 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "multiBarChart",
+          "height": 300.0,
+          "optionOpen": true,
+          "keys": [
+            {
+              "name": "name",
+              "index": 3.0,
+              "aggr": "sum",
+              "$$hashKey": "object:3832"
+            }
+          ],
+          "values": [
+            {
+              "name": "hoehe",
+              "index": 2.0,
+              "aggr": "sum",
+              "$$hashKey": "object:3835"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "flaeche",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "gewaesser",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {
+          "limit": "10"
+        },
+        "forms": {
+          "limit": {
+            "name": "limit",
+            "defaultValue": "30",
+            "hidden": false
+          }
+        }
+      },
+      "jobName": "paragraph_1473970530133_2074297516",
+      "id": "20160915-221530_1812050325",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TABLE",
+        "msg": "flaeche\tgewaesser\thoehe\tname\n899\t0.2\t460\tBassersdorf\n567\t0.0\t421\tBenken\n1018\t0.0\t530\tBuch a.I.\n269\t7.1\t393\tDachsen\n554\t0.0\t428\tDorf\n448\t0.4\t440\tD�llikon\n950\t0.5\t531\tFehraltorf\n240\t3.3\t398\tFlurlingen\n880\t0.3\t495\tGr�ningen\n970\t1.4\t720\tHirzel\n"
+      },
+      "dateCreated": "Sep 15, 2016 10:15:30 AM",
+      "dateStarted": "Sep 15, 2016 10:23:41 AM",
+      "dateFinished": "Sep 15, 2016 10:23:41 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Sep 15, 2016 10:17:53 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1473970663145_1683208743",
+      "id": "20160915-221743_1312325311",
+      "dateCreated": "Sep 15, 2016 10:17:43 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "elasticsearch",
+  "id": "2BV7RFYSY",
+  "angularObjects": {
+    "2BVCDPCFK:shared_process": [],
+    "2BWMSKJK8:shared_process": [],
+    "2BVXY4AEK:shared_process": [],
+    "2BUTCB2SU:shared_process": [],
+    "2BTVWBCJ9:shared_process": [],
+    "2BTG7CAVQ:shared_process": [],
+    "2BWJPQAX2:shared_process": [],
+    "2BWRW75AN:shared_process": [],
+    "2BWA19B62:shared_process": [],
+    "2BTDKTBGB:shared_process": [],
+    "2BTCNK1ZS:shared_process": [],
+    "2BWP77CYU:shared_process": [],
+    "2BT5WQ7DM:shared_process": [],
+    "2BW3Z36G2:shared_process": [],
+    "2BVYBQHW5:shared_process": [],
+    "2BVT54TNC:shared_process": [],
+    "2BT2E2JAA:shared_process": [],
+    "2BVAAKNH8:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}

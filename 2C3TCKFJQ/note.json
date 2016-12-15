@@ -1,0 +1,166 @@
+{
+  "paragraphs": [
+    {
+      "text": "import org.apache.spark.SparkConf\nimport org.apache.spark.streaming.{Seconds, StreamingContext}\nimport org.apache.spark.sql.SQLContext\n\n// import sqlContext.implicits._\n\n\n\nval appName \u003d \"Spark Streaming Test\"\n\ncase class Triple(subj: String, pred: String, obj: String)\n\nval ssc \u003d new StreamingContext(sc, Seconds(2))\nval lines \u003d ssc.socketTextStream(\"localhost\", 7777)\nval triplesList \u003d lines.map(l \u003d\u003e {val splitLine \u003d l.split(\"\\\",\\\"\"); Triple(splitLine(0), splitLine(1), splitLine(2)) })\ntriplesList.foreachRDD{rdd \u003d\u003e \n    val triplesDf \u003d rdd.toDF()\n    // Temporary view\n    triplesDf.createOrReplaceTempView(\"triplesDf\")\n    val wordCountsDataFrame \u003d \n    spark.sql(\"select pred from triplesDf group by pred\")\n  wordCountsDataFrame.show()\n}\nssc.start()\n  // ssc.awaitTermination()",
+      "dateUpdated": "Dec 15, 2016 11:07:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481732593600_1379677849",
+      "id": "20161214-172313_1190871287",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nimport org.apache.spark.SparkConf\n\nimport org.apache.spark.streaming.{Seconds, StreamingContext}\n\nimport org.apache.spark.sql.SQLContext\n\nappName: String \u003d Spark Streaming Test\n\ndefined class Triple\n\nssc: org.apache.spark.streaming.StreamingContext \u003d org.apache.spark.streaming.StreamingContext@659e7301\n\nlines: org.apache.spark.streaming.dstream.ReceiverInputDStream[String] \u003d org.apache.spark.streaming.dstream.SocketInputDStream@65b5c1fd\n\ntriplesList: org.apache.spark.streaming.dstream.DStream[Triple] \u003d org.apache.spark.streaming.dstream.MappedDStream@49062420\n"
+      },
+      "dateCreated": "Dec 14, 2016 5:23:13 AM",
+      "dateStarted": "Dec 15, 2016 11:07:28 AM",
+      "dateFinished": "Dec 15, 2016 11:07:39 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sql select * from triplesDF limit 10",
+      "dateUpdated": "Dec 15, 2016 10:53:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481733471897_-1832151774",
+      "id": "20161214-173751_431245704",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "null\nset zeppelin.spark.sql.stacktrace \u003d true to see full stacktrace"
+      },
+      "dateCreated": "Dec 14, 2016 5:37:51 AM",
+      "dateStarted": "Dec 15, 2016 10:53:59 AM",
+      "dateFinished": "Dec 15, 2016 10:54:17 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "ssc.stop(stopSparkContext\u003dfalse, stopGracefully\u003dtrue)",
+      "dateUpdated": "Dec 15, 2016 10:53:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481733857148_-1710067068",
+      "id": "20161214-174417_1598552304",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 14, 2016 5:44:17 AM",
+      "dateStarted": "Dec 15, 2016 10:49:53 AM",
+      "dateFinished": "Dec 15, 2016 10:49:54 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "dateUpdated": "Dec 15, 2016 10:53:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1481795360410_-380629316",
+      "id": "20161215-104920_1167528532",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 15, 2016 10:49:20 AM",
+      "dateStarted": "Dec 15, 2016 10:54:09 AM",
+      "dateFinished": "Dec 15, 2016 10:54:17 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "MfStreamAnalyzer/count",
+  "id": "2C3TCKFJQ",
+  "angularObjects": {
+    "2C4AU52YT:shared_process": [],
+    "2C4AP5QFN:shared_process": [],
+    "2C3PAAFFR:shared_process": [],
+    "2C342HV6R:shared_process": [],
+    "2C5MDMA5V:shared_process": [],
+    "2C65CVSF3:shared_process": [],
+    "2C4H3XHXP:shared_process": [],
+    "2C5SJS1EY:shared_process": [],
+    "2C3MK3GEX:shared_process": [],
+    "2C474ETWN:shared_process": [],
+    "2C69WM5R6:shared_process": [],
+    "2C4G4XNKQ:shared_process": [],
+    "2C6Q1VK8V:shared_process": [],
+    "2C6H9RBKH:shared_process": [],
+    "2C636CQ4G:shared_process": [],
+    "2C4Z2UMFS:shared_process": [],
+    "2C3QHZN3S:shared_process": [],
+    "2C3ZKC6ME:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}
